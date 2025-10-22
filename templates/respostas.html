@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Flask</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .menu {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .menu a {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            padding: 8px 14px;
+            border-radius: 6px;
+        }
+        .menu a:hover {
+            background: #0056b3;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            background: white;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        .sem-dados {
+            text-align: center;
+            color: #777;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Atividade Flask</h1>
+
+    <div class="menu">
+        <a href="/um">1</a>
+        <a href="/dois">2</a>
+        <a href="/tres">3</a>
+        <a href="/quatro">4</a>
+        <a href="/cinco">5</a>
+        <a href="/seis">6</a>
+        <a href="/sete">7</a>
+        <a href="/oito">8</a>
+    </div>
+
+    {% if dados %}
+    <table>
+        <thead>
+            <tr>
+                {% for cab in cabecalho %}
+                    <th>{{ cab }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for linha in dados %}
+                <tr>
+                    {% for valor in linha.values() %}
+                        <td>{{ valor }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="sem-dados">Selecione uma das questões acima para visualizar os resultados.</p>
+    {% endif %}
+</body>
+</html>

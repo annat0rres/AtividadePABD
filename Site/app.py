@@ -11,6 +11,7 @@ def conectar():
         host='127.0.0.1',
         database='academico'
         )
+    return cnx 
     
 def execucao(sql, titulo, cabecalho):
     cnx = conectar()
@@ -60,9 +61,9 @@ def quatro():
 @app.route ("/cinco")
 def cinco():
    sql = """
-        SELECT COUNT(cidade)
+        SELECT COUNT(*) AS total_alunos
         FROM alunos
-        WHERE cidade LIKE 'Natal';
+        WHERE cidade = 'Natal';
     """
    return execucao (sql, "Seleção 5 - Total de alunos de Natal", ["Total de Alunos"])
 
@@ -97,7 +98,7 @@ def oito():
 
 @app.route("/")
 def home():
-    return render_template ("respostas.html", titulo="Que seleção deseja acessar?", cabecalhos=[], dados=[])
+    return render_template ("respostas.html", titulo="Que seleção deseja acessar?", cabecalho=[], dados=[])
 
 
 if __name__ == "__main__":
